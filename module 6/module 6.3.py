@@ -1,18 +1,21 @@
 #2023/11/09 00:00|Домашнее задание по теме "Множественное наследование"
 class Horse:
-    x_distance = 0
-    _sound = "Frr"
+    def __init__(self):
+        self.x_distance = 0
+        self.sound = "Frr"
     def run(self, dx):
         self.x_distance += dx
 class Eagle:
-    y_distance = 0
-    sound = 'I train, eat, sleep, and repeat'
+    def __init__(self):
+        self.y_distance = 0
+        self.sound = 'I train, eat, sleep, and repeat'
     def fly(self, dy):
         self.y_distance += dy
 class Pegasus(Horse, Eagle):
     def __init__(self):
-        self.sound = super()._sound
-        self.sound = super().sound
+        Horse.__init__(self)
+        Eagle.__init__(self)
+
 
     def move(self, dx, dy):
         self.run(dx)
@@ -22,7 +25,7 @@ class Pegasus(Horse, Eagle):
         pos_pegasus = (self.x_distance, self.y_distance)
         return pos_pegasus
     def voice(self):
-        print(self.sound)
+        return print(self.sound)
 
 p1 = Pegasus()
 
